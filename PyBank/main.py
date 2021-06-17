@@ -1,7 +1,7 @@
 #import modules os, csv
 import os
 import csv
-import numpy as nm
+
 # File path to the csv file assigning to a variable
 file_path=r"C:\Users\Soni Mohandas\Documents\BootCamp\Python-challenge\PyBank\Resources\budget_data.csv"
 
