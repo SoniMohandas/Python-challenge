@@ -3,7 +3,8 @@ import os
 import csv
 
 # File path to the csv file assigning to a variable
-file_path=r"C:\Users\Soni Mohandas\Documents\BootCamp\Python-challenge\PyBank\Resources\budget_data.csv"
+file_path=os.path.join('..', 'budget_data.csv')
+# file_path=r"C:\Users\Soni Mohandas\Documents\BootCamp\Python-challenge\PyBank\Resources\budget_data.csv"
 
 # Open file mentioning the file path variable and assigning to another variable
 with open(file_path) as budget_file:
