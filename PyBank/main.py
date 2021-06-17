@@ -53,16 +53,19 @@ with open(file_path) as budget_file:
         if data[1]==str(grt_decrease_loss):
             grt_loss_date=data[0]
      
-    # Printing the total number of months and total profit or loss
+    # Printing the total number of months and total profit/loss in the entire period
     print('')
     print(f'Total months: {num_months}')
     print('')
-    print(f'Total profit/loss:{sum(profit_loss)}')
+    print(f'Total profit/loss:{total_profit_loss}')
     print('')
+    # Printing average changes in profit/loss in the entire period with date
     print(f"Average change: {avg_change}")
     print('')
+    # Printing greatest increase in profits in the entire period
     print(f'Greatest increase in profits: {grt_profit_date} (${grt_increase_profit})')
     print('')
+    # Printing the greatest decrese in losses in the entire period with date
     print(f'Greatest decrease in losses: {grt_loss_date} (${grt_decrease_loss})')
     print('')
    
