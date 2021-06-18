@@ -3,8 +3,8 @@ import os
 import csv
 
 # Path to the csv file assigning to a variable
-#file_path=os.path.join('..', 'election_data.csv')
-file_path=r"C:\Users\Soni Mohandas\Documents\BootCamp\Python-challenge\PyPoll\election_data.csv"
+file_path=os.path.join('Resources', 'election_data.csv')
+#file_path=r"C:\Users\Soni Mohandas\Documents\BootCamp\Python-challenge\PyPoll\election_data.csv"
 
 # Open file mentioning the file path variable and assigning to another variable
 with open(file_path) as election_file:
@@ -64,7 +64,4 @@ with open(file_path) as election_file:
     print("Winner: Khan")
     print("----------------------------")
 
-
-    
-    # #for candidates in voters_list:
         
