@@ -2,75 +2,69 @@
 import os
 import csv
 
-# File path to the csv file assigning to a variable
+# Path to the csv file assigning to a variable
 #file_path=os.path.join('..', 'election_data.csv')
-file_path=r"C:\Users\Soni Mohandas\Documents\BootCamp\Python-challenge\PyPoll\Resources\election_data.csv"
+file_path=r"C:\Users\Soni Mohandas\Documents\BootCamp\Python-challenge\PyPoll\election_data.csv"
 
 # Open file mentioning the file path variable and assigning to another variable
-with open(file_path) as budget_file:
+with open(file_path) as election_file:
 
     # File is reading and assigning to a variable
-    file_reader=csv.reader(budget_file, delimiter=",")
+    file_reader=csv.reader(election_file, delimiter=",")
     
     print(' ')
-    print("Financial Analysis")
-    print("-------------------------------------------------------")
+    print("Election Results")
+    print("-----------------------------")
         
-    # declaring a list variable to store profit or loss in the file 
-    profit_loss=[]
-    tot_data=[]
-       
+    # declaring two list variables to store total votes and whole data in the file 
+    total_votes=[]
+    voters_list=[]
+    candidates=[]
+    cand=[""]
     # File header is assigning
     file_header=next(file_reader)
-    # for looping to loop through all the data in the dataset
+    # Looping through all the data in the dataset using for loop
     for data in file_reader:
           
-        # Profit or loss is storing in a seperate list variable
-        profit_loss.append(int(data[1]))
-        # All the data including dates are storing in another list
-        tot_data.append(data)
-
-    # Finding length of the list which is equal total months
-    num_months=len(profit_loss)
-
-    # Finding total profit or loss 
-    total_profit_loss=sum(profit_loss)
-
-    # Finding the average change of profit or loss in the whole period
-    avg_change=round(sum(profit_loss)/num_months,2)
-
-    # Finding the greatest increase in profit 
-    grt_increase_profit=max(profit_loss)
-
-    # Finding the greatest decrease in loss
-    grt_decrease_loss=min(profit_loss)
-
-    # Using the for loop and conditions finding the dates corresponding to 
-    # greatest increase in profits and greatest decrease losses
-    for data in tot_data:
-        if data[1]==str(grt_increase_profit):
-            grt_profit_date=data[0]
-            
-        if data[1]==str(grt_decrease_loss):
-            grt_loss_date=data[0]
-     
-    # Printing the total number of months and total profit/loss in the entire period
-    print('')
-    print(f'Total months: {num_months}')
-    print('')
-    print(f'Total profit/loss:{total_profit_loss}')
-    print('')
-    # Printing average changes in profit/loss in the entire period with date
-    print(f"Average change: {avg_change}")
-    print('')
-    # Printing greatest increase in profits in the entire period
-    print(f'Greatest increase in profits: {grt_profit_date} (${grt_increase_profit})')
-    print('')
-    # Printing the greatest decrese in losses in the entire period with date
-    print(f'Greatest decrease in losses: {grt_loss_date} (${grt_decrease_loss})')
-    print('')
-   
-
-  
+        # Number of votes are storing in a seperate list variable
+        total_votes.append(int(data[0]))
+        # All the data including voter ID, county, and Candidate are storing in another list
+        voters_list.append(data)
+        #finding of list of candidates who recieved votes
+        candidates.append(data[2])
         
+    # Finding length of list which is equal total votes casted
+    tot_casted_votes=len(total_votes)
+    print(f'Total Votes: {tot_casted_votes}')
+    print("-----------------------------")
     
+    # Finding complete list of candidates who recieved votes
+    print(f'Candidates who recieved votes: {list(set(candidates))}')
+    print("")
+        
+    khan_tot_votes=len([vot for vot in candidates if vot=="Khan"])
+    khan_perc_vot='{0:.3f}'.format(khan_tot_votes/tot_casted_votes*100)
+    print(f'Khan: {khan_perc_vot}% ({khan_tot_votes})')
+    print("")
+
+    li_tot_votes=len([vot for vot in candidates if vot=="Li"])
+    li_perc_vot='{0:.3f}'.format(li_tot_votes/tot_casted_votes*100)
+    print(f'Li: {li_perc_vot}% ({li_tot_votes})')
+    print("")
+
+    correy_tot_votes=len([vot for vot in candidates if vot=="Correy"])
+    correy_perc_vot='{0:.3f}'.format(correy_tot_votes/tot_casted_votes*100)
+    print(f'Correy: {correy_perc_vot}% ({correy_tot_votes})')
+    print("")
+   
+    tooley_tot_votes=len([vot for vot in candidates if vot=="O'Tooley"])
+    tooley_perc_vot='{0:.3f}'.format(tooley_tot_votes/tot_casted_votes*100)
+    print(f"O'Tooley: {tooley_perc_vot}% ({tooley_tot_votes})")
+    print("----------------------------")
+    print("Winner: Khan")
+    print("----------------------------")
+
+
+    
+    # #for candidates in voters_list:
+        

@@ -3,8 +3,8 @@ import os
 import csv
 
 # File path to the csv file assigning to a variable
-file_path=os.path.join('Resources', 'budget_data.csv')
-# file_path=r"C:\Users\Soni Mohandas\Documents\BootCamp\Python-challenge\PyBank\Resources\budget_data.csv"
+# file_path=os.path.join('Resources', 'budget_data.csv')
+file_path=r"C:\Users\Soni Mohandas\Documents\BootCamp\Python-challenge\PyBank\Resources\budget_data.csv"
 
 # Open file mentioning the file path variable and assigning to another variable
 with open(file_path) as budget_file:
@@ -60,10 +60,10 @@ with open(file_path) as budget_file:
     print('')
     print(f'Total profit/loss:{total_profit_loss}')
     print('')
-    # Printing average changes in profit/loss in the entire period with date
+    # Printing average changes in profit/loss in the entire period
     print(f"Average change: {avg_change}")
     print('')
-    # Printing greatest increase in profits in the entire period
+    # Printing greatest increase in profits in the entire period with date
     print(f'Greatest increase in profits: {grt_profit_date} (${grt_increase_profit})')
     print('')
     # Printing the greatest decrese in losses in the entire period with date
