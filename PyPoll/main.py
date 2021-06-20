@@ -1,90 +1,58 @@
-#import modules os, csv
+#import modules 
 import os
 import csv
 
-# Path to the csv file assigning to a variable
+# Path to the csv file is assigning to a variable
 #file_path=os.path.join('Resources', 'election_data.csv')
 file_path=r"C:\Users\Soni Mohandas\Documents\BootCamp\Python-challenge\PyPoll\Resources\election_data.csv"
 
-# Open file mentioning the file path variable and assigning to another variable
+# Open file and assigning to a variable
 with open(file_path) as election_file:
-
     # File is reading and assigning to a variable
     file_reader=csv.reader(election_file, delimiter=",")
-    
-    print(' ')
-    print("Election Results")
-    print("-----------------------------")
         
-    # declaring two list variables to store total votes and candidates in the file 
-    total_votes=[]
+    # declaring one list variable to store candidates names as equal to the number of votes they got and 
+    # and a dictionary variable to store candidate name and number of votes they got. 
     candidates=[]
-
     winner={}
     
-    # File header is assigning
+    # File header is assigning to start from second row when looping through data file
     file_header=next(file_reader)
     # Looping through all the data in the dataset using for loop
     for data in file_reader:
-          
-        # Number of votes are storing in a seperate list variable
-        total_votes.append(int(data[0]))
-       
-        #finding of list of candidates who recieved votes
+             
+        # listing of candidates to a variable who recieved votes
         candidates.append(data[2])
         
-    # Finding length of list which is equal total votes casted
-    tot_casted_votes=len(total_votes)
-    print(f'Total Votes: {tot_casted_votes}')
+    # Finding length of candidate list which is equal to total votes casted
+    tot_casted_votes=len(candidates)
+    # candidates list is cleaning, ie eliminating duplicate values and storing exact candidate 
+    # list in another variable
+    list_cand= list(set(candidates))
+
+    print(' ')
+    print("Election Results")
     print("-----------------------------")
+    print(f'Total Votes: {tot_casted_votes}')  # printing total votes casted
+    print("-----------------------------")
+    print("")
     
-    # Finding complete list of candidates who recieved votes
-    print(f'Candidates who recieved votes: {list(set(candidates))}')
-    print("")
-
-    # Finding total votes got by Khan using comprehenson of for loop and conditions    
-    khan_tot_votes=len([vot for vot in candidates if vot=="Khan"])
-    # Finding percentage of votes got and formating to 3 decimal places
-    khan_perc_vot='{0:.3f}'.format(khan_tot_votes/tot_casted_votes*100)
-    # adding the percentage of votes to the dictionary
-    winner.update({"Khan":khan_perc_vot})
-    # Printing the results of Khan
-    print(f'Khan: {khan_perc_vot}% ({khan_tot_votes})')
-    print("")
-
-    # Finding total votes got by Li using comprehenson of for loop and conditions
-    li_tot_votes=len([vot for vot in candidates if vot=="Li"])
-    # Finding percentage of votes got and formating to 3 decimal places
-    li_perc_vot='{0:.3f}'.format(li_tot_votes/tot_casted_votes*100)
-    # adding the percentage of votes to the dictionary
-    winner.update({"Li":li_perc_vot})
-    # Printing the results of Li
-    print(f'Li: {li_perc_vot}% ({li_tot_votes})')
-    print("")
-
-    # Finding total votes got by Correy using comprehenson of for loop and conditions
-    correy_tot_votes=len([vot for vot in candidates if vot=="Correy"])
-    # Finding percentage of votes got and formating to 3 decimal places
-    correy_perc_vot='{0:.3f}'.format(correy_tot_votes/tot_casted_votes*100)# printig the percentage of votes Khan got
-    # adding the percentage of votes to the dictionary
-    winner.update({"Correy":correy_perc_vot})
-    # Printing the results of Correy
-    print(f'Correy: {correy_perc_vot}% ({correy_tot_votes})')
-    print("")
-   
-    # Finding total votes got by O'Tooley using comprehenson of for loop and conditions
-    tooley_tot_votes=len([vot for vot in candidates if vot=="O'Tooley"])
-    # Finding percentage of votes got and formating to 3 decimal places
-    tooley_perc_vot='{0:.3f}'.format(tooley_tot_votes/tot_casted_votes*100)
-    # adding the percentage of votes to the dictionary
-    winner.update({"O'Tooley":tooley_perc_vot})
-    # Printing the results of O'Tooley
-    print(f"O'Tooley: {tooley_perc_vot}% ({tooley_tot_votes})")
-    
-    # finding the matching max value from the winner dictionery
+    # looping through all the candidates using for loop
+    for i in range(len(list_cand)):
+        # Finding total votes got by each candidate using for loop comprehension and condition   
+        votes_got=len([vot for vot in candidates if vot==list_cand[i]])
+        # Finding percentage of votes got and formating to 3 decimal places
+        perc_vot='{0:.3f}'.format(votes_got/tot_casted_votes*100)
+        # adding percentage of votes to the dictionary with candidate name as key
+        winner.update({list_cand[i]:perc_vot})
+        # Printing the results of each candidate's name percentage of votes they got and number of votes they got
+        print(f'{list_cand[i]}: {perc_vot}% ({votes_got})')
+        print("")
+ 
+    # finding the matching key with the max value from the winner dictionery
     win_match=max(winner,key=winner.get)
     print("----------------------------")
-    print(f'Winner: {win_match}')
+    print(f'Winner: {win_match}')               # printing the winner
     print("----------------------------")
     print(" ")
 
