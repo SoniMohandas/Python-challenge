@@ -46,7 +46,7 @@ with open(file_path) as election_file:
     khan_tot_votes=len([vot for vot in candidates if vot=="Khan"])
     # Finding percentage of votes got and formating to 3 decimal places
     khan_perc_vot='{0:.3f}'.format(khan_tot_votes/tot_casted_votes*100)
-    # printig the percentage of votes Khan got
+    # adding the percentage of votes to the dictionary
     winner.update({"Khan":khan_perc_vot})
     # Printing the results of Khan
     print(f'Khan: {khan_perc_vot}% ({khan_tot_votes})')
@@ -56,7 +56,7 @@ with open(file_path) as election_file:
     li_tot_votes=len([vot for vot in candidates if vot=="Li"])
     # Finding percentage of votes got and formating to 3 decimal places
     li_perc_vot='{0:.3f}'.format(li_tot_votes/tot_casted_votes*100)
-    # printig the percentage of votes LI got
+    # adding the percentage of votes to the dictionary
     winner.update({"Li":li_perc_vot})
     # Printing the results of Li
     print(f'Li: {li_perc_vot}% ({li_tot_votes})')
@@ -66,7 +66,7 @@ with open(file_path) as election_file:
     correy_tot_votes=len([vot for vot in candidates if vot=="Correy"])
     # Finding percentage of votes got and formating to 3 decimal places
     correy_perc_vot='{0:.3f}'.format(correy_tot_votes/tot_casted_votes*100)# printig the percentage of votes Khan got
-    # printig the percentage of votes Correy got
+    # adding the percentage of votes to the dictionary
     winner.update({"Correy":correy_perc_vot})
     # Printing the results of Correy
     print(f'Correy: {correy_perc_vot}% ({correy_tot_votes})')
@@ -76,7 +76,7 @@ with open(file_path) as election_file:
     tooley_tot_votes=len([vot for vot in candidates if vot=="O'Tooley"])
     # Finding percentage of votes got and formating to 3 decimal places
     tooley_perc_vot='{0:.3f}'.format(tooley_tot_votes/tot_casted_votes*100)
-    # printig the percentage of votes O'Tooley got
+    # adding the percentage of votes to the dictionary
     winner.update({"O'Tooley":tooley_perc_vot})
     # Printing the results of O'Tooley
     print(f"O'Tooley: {tooley_perc_vot}% ({tooley_tot_votes})")
