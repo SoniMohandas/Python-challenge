@@ -1,76 +1,55 @@
-#import modules os, csv
 import os
 import csv
+# Absolute file path to the data file
+# path=os.path.join('Resources', 'budjet_data.csv')
+path=r'C:\Users\Soni Mohandas\Documents\BootCamp\Python-challenge\PyBank\Resources\budget_data.csv'
+# File opened using a variable and is reading with another variable
+with open(path) as budget_file:
+    file_reader=csv.reader(budget_file, delimiter=',')
+# Three list variable for storing profit and loss and another one for storing whole 
+# data in two columns and third one for storing for change in profit or loss on every month
+    profit_loss=[]
+    budget_data=[]
+    change=[]
+    # header section of the file seperating using next function
+    next(file_reader)
+    # looping through the file and storing whole data and profit or loss alone in two lists
+    for i in file_reader:
+        budget_data.append(i)
+        profit_loss.append(int(i[1]))
+    # looping through profit loss list find the changes and storing in another list and it is
+    # also appending another list to find max and min change months   
+    for j in range(1,len(profit_loss)):
+        change.append(profit_loss[j]-profit_loss[j-1])
+        budget_data[j].append(profit_loss[j]-profit_loss[j-1])
+    # Finding average change in months
+    average_change=round(sum(change)/len(budget_data),2)
+    # looping through budget_data list to match maximum change with months and 
+    # minimum change with months using conditions
+    for k in range(1, len(budget_data)):
+        if budget_data[k][2]==max(change):
+            max_month=budget_data[k][0]
+        if budget_data[k][2]==min(change):
+            min_month=budget_data[k][0]
 
-# File path to the csv file assigning to a variable
-file_path=os.path.join('Resources', 'budget_data.csv')
-#file_path=r"C:\Users\Soni Mohandas\Documents\BootCamp\Python-challenge\PyBank\Resources\budget_data.csv"
-
-# Open file mentioning the file path variable and assigning to another variable
-with open(file_path) as budget_file:
-
-    # File is reading and assigning to a variable
-    file_reader=csv.reader(budget_file, delimiter=",")
-    
+    # Printing the total number of months using len fundtion
     print(' ')
     print("Financial Analysis")
     print("-------------------------------------------------------")
         
-    # declaring a list variable to store profit or loss in the file 
-    profit_loss=[]
-    tot_data=[]
-       
-    # File header is assigning
-    file_header=next(file_reader)
-    # for looping to loop through all the data in the dataset
-    for data in file_reader:
-          
-        # Profit or loss is storing in a seperate list variable
-        profit_loss.append(int(data[1]))
-        # All the data including dates are storing in another list
-        tot_data.append(data)
-
-    # Finding length of the list which is equal total months
-    num_months=len(profit_loss)
-
-    # Finding total profit or loss 
-    total_profit_loss=sum(profit_loss)
-
-    # Finding the average change of profit or loss in the whole period
-    avg_change=round(sum(profit_loss)/num_months,2)
-
-    # Finding the greatest increase in profit 
-    grt_increase_profit=max(profit_loss)
-
-    # Finding the greatest decrease in loss
-    grt_decrease_loss=min(profit_loss)
-
-    # Using the for loop and conditions finding the dates corresponding to 
-    # greatest increase in profits and greatest decrease losses
-    for data in tot_data:
-        if data[1]==str(grt_increase_profit):
-            grt_profit_date=data[0]
-            
-        if data[1]==str(grt_decrease_loss):
-            grt_loss_date=data[0]
-     
-    # Printing the total number of months and total profit/loss in the entire period
     print('')
-    print(f'Total months: {num_months}')
+    print(f'Total months: {len(budget_data)}')
     print('')
-    print(f'Total profit/loss:{total_profit_loss}')
+    # Total profit or loss is calculating
+    print(f'Total profit or loss:{sum(profit_loss)}')
     print('')
     # Printing average changes in profit/loss in the entire period
-    print(f"Average change: {avg_change}")
+    print(f"Average change: {average_change}")
     print('')
     # Printing greatest increase in profits in the entire period with date
-    print(f'Greatest increase in profits: {grt_profit_date} (${grt_increase_profit})')
+    print(f'Greatest increase in profits: {max_month} (${max(change)})')
     print('')
     # Printing the greatest decrese in losses in the entire period with date
-    print(f'Greatest decrease in losses: {grt_loss_date} (${grt_decrease_loss})')
+    print(f'Greatest decrease in losses: {min_month} (${min(change)})')
     print('')
-   
-
-  
-        
     
