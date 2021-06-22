@@ -2,9 +2,9 @@
 import os
 import csv
 # Relative path to the data file
-# file_path=os.path.join('Resources', 'budget_data.csv')
+path=os.path.join('Resources', 'budget_data.csv')
 # Absolute file path to the data file
-path=r'C:\Users\Soni Mohandas\Documents\BootCamp\Python-challenge\PyBank\Resources\budget_data.csv'
+# path=r'C:\Users\Soni Mohandas\Documents\BootCamp\Python-challenge\PyBank\Resources\budget_data.csv'
 
 # File opened using a variable and is reading with another variable
 with open(path) as budget_file:
@@ -56,6 +56,7 @@ textfile_path=os.path.join("Analysis", "Analysis.txt")
 with open(textfile_path, "w") as txt_file:
     # Writing output to the text file
     txt_file.write("Financial Analysis\n")
+    txt_file.write("-------------------------------------------------------\n")
     txt_file.write(f'Total months: {len(budget_data)}\n')
     txt_file.write(f'Total profit or loss:{sum(profit_loss)}\n')
     txt_file.write(f'Greatest increase in profits: {max_month} (${max(change)})\n')

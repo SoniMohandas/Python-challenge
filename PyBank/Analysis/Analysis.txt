@@ -1,4 +1,5 @@
 Financial Analysis
+-------------------------------------------------------
 Total months: 86
 Total profit or loss:38382578
 Greatest increase in profits: Feb-12 ($1926159)

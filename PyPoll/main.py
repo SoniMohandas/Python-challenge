@@ -3,8 +3,8 @@ import os
 import csv
 
 # Path to the csv file is assigning to a variable
-#file_path=os.path.join('Resources', 'election_data.csv')
-file_path=r"C:\Users\Soni Mohandas\Documents\BootCamp\Python-challenge\PyPoll\Resources\election_data.csv"
+file_path=os.path.join('Resources', 'election_data.csv')
+# file_path=r"C:\Users\Soni Mohandas\Documents\BootCamp\Python-challenge\PyPoll\Resources\election_data.csv"
 
 # Open file and assigning to a variable
 with open(file_path) as election_file:
@@ -58,5 +58,19 @@ with open(file_path) as election_file:
     print(f'Winner: {win_match}')               # printing the winner
     print("----------------------------")
     print(" ")
-
+textfile_path=os.path.join("Analysis", "Analysis.txt")
+with open(textfile_path, "w") as txt_file:
+    # Writing output to the text file
+    txt_file.write("Election Results\n")
+    txt_file.write("-----------------------------\n")
+    txt_file.write(f'Total Votes: {tot_casted_votes}\n')
+    txt_file.write("-----------------------------\n")
+    for i in range(len(list_cand)):
+        votes_got=len([vot for vot in candidates if vot==list_cand[i]])
+        perc_vot='{0:.3f}'.format(votes_got/tot_casted_votes*100)
+        txt_file.write(f'{list_cand[i]}: {perc_vot}% ({votes_got})\n')
+    win_match=max(winner,key=winner.get)
+    txt_file.write("----------------------------\n")
+    txt_file.write(f'Winner: {win_match}\n')
+    txt_file.write("----------------------------")
         
