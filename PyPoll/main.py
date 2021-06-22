@@ -11,7 +11,7 @@ with open(file_path) as election_file:
     # File is reading and assigning to a variable
     file_reader=csv.reader(election_file, delimiter=",")
         
-    # declaring one list variable to store candidates names as equal to the number of votes they got and 
+    # declaring one list variable to store candidates names as equal to the number of votes they got
     # and a dictionary variable to store candidate name and number of votes they got. 
     candidates=[]
     winner={}
@@ -21,25 +21,28 @@ with open(file_path) as election_file:
     # Looping through all the data in the dataset using for loop
     for data in file_reader:
              
-        # listing of candidates to a variable who recieved votes
+        # Candidates names are assigning to a list, each candidate names will be stored 
+        # which is equal to the number of votes they got
         candidates.append(data[2])
         
-    # Finding length of candidate list which is equal to total votes casted
+    # Finding length of candidate list which is equal to total votes polled
     tot_casted_votes=len(candidates)
     # candidates list is cleaning, ie eliminating duplicate values and storing exact candidate 
-    # list in another variable
+    # list in another variable.  In it candidates names appears only ones
     list_cand= list(set(candidates))
 
     print(' ')
     print("Election Results")
     print("-----------------------------")
-    print(f'Total Votes: {tot_casted_votes}')  # printing total votes casted
+    print(f'Total Votes: {tot_casted_votes}')  # printing total votes polled
     print("-----------------------------")
     print("")
     
-    # looping through all the candidates using for loop
+    # looping through all the candidate names using for loop
     for i in range(len(list_cand)):
-        # Finding total votes got by each candidate using for loop comprehension and condition   
+        # Finding total votes got by each candidate using for loop comprehension and condition
+        # here in the inner for loop the candidate names appears in candidate list as equal to the 
+        # the votes they got
         votes_got=len([vot for vot in candidates if vot==list_cand[i]])
         # Finding percentage of votes got and formating to 3 decimal places
         perc_vot='{0:.3f}'.format(votes_got/tot_casted_votes*100)

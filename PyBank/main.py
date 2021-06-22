@@ -9,23 +9,22 @@ path=r'C:\Users\Soni Mohandas\Documents\BootCamp\Python-challenge\PyBank\Resourc
 # File opened using a variable and is reading with another variable
 with open(path) as budget_file:
     file_reader=csv.reader(budget_file, delimiter=',')
-# Three list variable for storing profit and loss and another one for storing whole 
+# Three list variable one for storing profit or loss and one for storing whole 
 # data in two columns and third one for storing for change in profit or loss on every month
     profit_loss=[]
     budget_data=[]
     change=[]
-    # header section of the file seperating using next function
+    # Seperating header from data file using next function
     next(file_reader)
-    # looping through the file and storing whole data including columns 
-    # month and profit or loss and profit or loss alone in two lists
+    # looping through the file using for loop  
     for i in file_reader:
-        budget_data.append(i)
-        profit_loss.append(int(i[1]))
-    # looping through profit loss list to find the changes also the changes 
-    # are appending to whole data list to match max and min changes of months   
+        budget_data.append(i)           # List stores month and profit or loss
+        profit_loss.append(int(i[1]))   # List stores profit or loss only
+
+    # looping through profit or loss list to find the changes   
     for j in range(1,len(profit_loss)):
-        change.append(profit_loss[j]-profit_loss[j-1])
-        budget_data[j].append(profit_loss[j]-profit_loss[j-1])
+        change.append(profit_loss[j]-profit_loss[j-1])          # Changes are storing in a list
+        budget_data[j].append(profit_loss[j]-profit_loss[j-1])  # Changes are appending in month and profit or loss list as well to match with max/min
     # Finding average change in months
     average_change=round(sum(change)/len(change),2)
     # looping through budget_data list to match maximum change with months and 
@@ -36,18 +35,15 @@ with open(path) as budget_file:
         if budget_data[k][2]==min(change):
             min_month=budget_data[k][0]
 
-    # Printing the total number of months using len fundtion
     print(' ')
     print("Financial Analysis")
     print("-------------------------------------------------------")      
     print('')
-    print(f'Total months: {len(budget_data)}')
+    print(f'Total months: {len(budget_data)}')          # Printing the total number of months using len fundtion
     print('')
-    # Total profit or loss is calculating
-    print(f'Total profit or loss:{sum(profit_loss)}')
+    print(f'Total profit or loss:{sum(profit_loss)}')   # Total profit or loss is calculating
     print('')
-    # Printing average changes in profit/loss in the entire period
-    print(f"Average change: {average_change}")
+    print(f"Average change: {average_change}")          # Printing average changes in profit/loss in the entire period
     print('')
     # Printing greatest increase in profits in the entire period with date
     print(f'Greatest increase in profits: {max_month} (${max(change)})')
