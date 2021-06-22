@@ -51,4 +51,14 @@ with open(path) as budget_file:
     # Printing the greatest decrese in losses in the entire period with date
     print(f'Greatest decrease in losses: {min_month} (${min(change)})')
     print('')
+# Declare variavle for output file
+textfile_path=os.path.join("Analysis", "Analysis.txt")
+with open(textfile_path, "w") as txt_file:
+    # Writing output to the text file
+    txt_file.write("Financial Analysis\n")
+    txt_file.write(f'Total months: {len(budget_data)}\n')
+    txt_file.write(f'Total profit or loss:{sum(profit_loss)}\n')
+    txt_file.write(f'Greatest increase in profits: {max_month} (${max(change)})\n')
+    txt_file.write(f'Greatest decrease in losses: {min_month} (${min(change)})\n')
+
     
