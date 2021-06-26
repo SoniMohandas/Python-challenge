@@ -73,4 +73,3 @@ with open(textfile_path, "w") as txt_file:
     txt_file.write("----------------------------\n")
     txt_file.write(f'Winner: {win_match}\n')
     txt_file.write("----------------------------")
-        

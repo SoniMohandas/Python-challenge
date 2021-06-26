@@ -2,9 +2,9 @@
 import os
 import csv
 # Relative path to the data file
-path=os.path.join('Resources', 'budget_data.csv')
+# path=os.path.join('Resources', 'budget_data.csv')
 # Absolute file path to the data file
-# path=r'C:\Users\Soni Mohandas\Documents\BootCamp\Python-challenge\PyBank\Resources\budget_data.csv'
+path=r'C:\Users\Soni Mohandas\Documents\BootCamp\Python-challenge\PyBank\Resources\budget_data.csv'
 
 # File opened using a variable and is reading with another variable
 with open(path) as budget_file:
