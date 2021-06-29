@@ -72,4 +72,4 @@ with open(textfile_path, "w") as txt_file:
     win_match=max(winner,key=winner.get)
     txt_file.write("----------------------------\n")
     txt_file.write(f'Winner: {win_match}\n')
-    txt_file.write("----------------------------")
+    txt_file.write("----------------------------") 

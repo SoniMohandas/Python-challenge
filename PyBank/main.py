@@ -41,9 +41,9 @@ with open(path) as budget_file:
     print('')
     print(f'Total months: {len(budget_data)}')          # Printing the total number of months using len fundtion
     print('')
-    print(f'Total profit or loss:{sum(profit_loss)}')   # Total profit or loss is calculating
+    print(f'Total profit or loss:${sum(profit_loss)}')   # Total profit or loss is calculating
     print('')
-    print(f"Average change: {average_change}")          # Printing average changes in profit/loss in the entire period
+    print(f"Average change: ${average_change}")          # Printing average changes in profit/loss in the entire period
     print('')
     # Printing greatest increase in profits in the entire period with date
     print(f'Greatest increase in profits: {max_month} (${max(change)})')
@@ -58,7 +58,8 @@ with open(textfile_path, "w") as txt_file:
     txt_file.write("Financial Analysis\n")
     txt_file.write("-------------------------------------------------------\n")
     txt_file.write(f'Total months: {len(budget_data)}\n')
-    txt_file.write(f'Total profit or loss:{sum(profit_loss)}\n')
+    txt_file.write(f'Total profit or loss:${sum(profit_loss)}\n')
+    txt_file.write(f"Average change: ${average_change}\n")
     txt_file.write(f'Greatest increase in profits: {max_month} (${max(change)})\n')
     txt_file.write(f'Greatest decrease in losses: {min_month} (${min(change)})\n')
 
